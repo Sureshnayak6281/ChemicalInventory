@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Inventory</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .toolbar {
+            margin-bottom: 20px;
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .toolbar button {
+            margin-right: 10px;
+        }
+        tr.selected {
+            background-color: #d4edda;
+        }
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .table-fixed {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        .table-fixed thead {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: #f2f2f2;
+        }
+        .table-fixed th, .table-fixed td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .table-fixed th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        .checkbox-cell {
+            width: 30px;
+            text-align: center;
+        }
+        .selected .checkbox-cell::after {
+            content: '\2713';
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+            <button id="addRow" class="btn btn-light btn-sm">
+                <i class="fas fa-plus" style="color: green;"></i>
+            </button>
+            <button id="moveUp" class="btn btn-light btn-sm">
+                <i class="fas fa-arrow-up" style="color: blue;"></i>
+            </button>
+            <button id="moveDown" class="btn btn-light btn-sm">
+                <i class="fas fa-arrow-down" style="color: orange;"></i>
+            </button>
+            <button id="deleteRow" class="btn btn-light btn-sm">
+                <i class="fas fa-trash" style="color: red;"></i>
+            </button>
+            <button id="refresh" class="btn btn-light btn-sm">
+                <i class="fas fa-sync" style="color: purple;"></i>
+            </button>
+            <button id="save" class="btn btn-primary btn-sm">
+                <i class="fas fa-save" style="color: white;"></i> Save
+            </button>
+        </div>
+        <div class="table-container">
+            <table id="chemicalTable" class="table table-bordered table-hover table-fixed">
+                <thead>
+                    <tr>
+                        <th class="checkbox-cell">
+                            <input type="checkbox" id="selectAll">
+                        </th>
+                        <th>ID</th>
+                        <th>Chemical Name</th>
+                        <th>Vendor</th>
+                        <th>Density</th>
+                        <th>Viscosity</th>
+                        <th>Packaging</th>
+                        <th>Pack Size</th>
+                        <th>Unit</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="Table.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
